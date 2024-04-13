@@ -42,8 +42,10 @@ while True: #persistência no menu enquanto não entra na linha 67
                 aluno = {}
                 aluno['matricula'] = int(input('Digite a matrícula: '))
                 aluno['nome'] = input('Digite o nome do estudante: ')
-                aluno['documento'] = input('Digite o CPF: ')
+                aluno['cpf'] = input('Digite o CPF: ')
                 estudantes.append(aluno) #adiciona os dicionarios à lista 'estudantes'
+                print('=================================')
+                print('Estudante cadastrado com sucesso!\n\n')
             elif opcao_estudantes =='2': #verifica se a lista está vazia ou imprime a lista na tela 
                 if estudantes == []:
                     print('Não há estudantes cadastrados')
@@ -51,9 +53,32 @@ while True: #persistência no menu enquanto não entra na linha 67
                     for i in estudantes:
                         print(i)
             elif opcao_estudantes =='3':
-                print('\n\nEM DESENVOLVIMENTO')
+                editar = int(input('Qual é o número da matrícula para atualizar? '))
+                editado = None
+                for aluno in estudantes:
+                    if aluno['matricula'] == editar:
+                        editado = aluno
+                        break
+                if editado is None:
+                    print(f'Código {excluir} não encontrado')
+                else:
+                    editado['matricula'] = int(input("Digite a nova matrícula: "))
+                    editado['nome'] = input("Digite o novo nome: ")
+                    editado['cpf'] = input("Digite o novo cpf: ")
+                    
+                print('Estudante atualizado com sucesso!')
             elif opcao_estudantes =='4':
-                print('\n\nEM DESENVOLVIMENTO')
+                excluir = int(input('Qual é o número da matrícula para excluir? '))
+                removido = None
+                for aluno in estudantes:
+                    if aluno['matricula'] == excluir:
+                        removido = aluno
+                        break
+                if removido is None:
+                    print(f'Código {excluir} não encontrado')
+                else:
+                    estudantes.remove(removido)
+                print(f'Estudante {aluno['nome']} foi excluido com sucesso!')
             elif opcao_estudantes =='5': #encerra o menu de estudantes e volta ao principal
                 break
             else:
