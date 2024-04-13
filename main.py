@@ -6,7 +6,6 @@ Curso: Análise e Desenvolvimento de Sistemas
 #bloco de listas de operações
 estudantes = []
 
-
 while True: #persistência no menu enquanto não entra na linha 67
     print("                                        ")
     print("****************************************")
@@ -39,15 +38,18 @@ while True: #persistência no menu enquanto não entra na linha 67
             print('5 - Voltar ao menu principal')
             print('\n')
             opcao_estudantes = input('Escolha a operação: ')
-            if opcao_estudantes == '1': #adiciona o nome na variável aluno e depois faz um append na lista de estudantes
-                aluno = input('Digite o nome do aluno: ')
-                estudantes.append(aluno)
-            elif opcao_estudantes =='2': #verifica se a lista está vazia ou imprime a lista formatada na tela 
+            if opcao_estudantes == '1': #adiciona os valores 'matricula', 'nome' e 'cpf' as respectivas chaves
+                aluno = {}
+                aluno['matricula'] = int(input('Digite a matrícula: '))
+                aluno['nome'] = input('Digite o nome do estudante: ')
+                aluno['documento'] = input('Digite o CPF: ')
+                estudantes.append(aluno) #adiciona os dicionarios à lista 'estudantes'
+            elif opcao_estudantes =='2': #verifica se a lista está vazia ou imprime a lista na tela 
                 if estudantes == []:
                     print('Não há estudantes cadastrados')
                 else:
-                    for i in range(len(estudantes)):
-                        print("-",estudantes[i])
+                    for i in estudantes:
+                        print(i)
             elif opcao_estudantes =='3':
                 print('\n\nEM DESENVOLVIMENTO')
             elif opcao_estudantes =='4':
