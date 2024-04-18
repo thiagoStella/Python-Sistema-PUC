@@ -50,8 +50,7 @@ def read_student(): #verifica se a lista está vazia ou imprime a lista na tela
         for i in estudantes:
             print(i)
 
-def update_student():
-    aluno = ''
+def update_student(): #verifica se o input consta na lista de estudantes, caso esteja abre a edição, caso não, retorna um msg.
     editar = int(input('Qual é o número da matrícula para atualizar? '))
     editado = None
     for aluno in estudantes:
@@ -65,22 +64,21 @@ def update_student():
         print('\nEstudante atualizado com sucesso!')
         
     else:
-        print(f'Código {editar} não encontrado')
+        print(f'Matricula {editar} não encontrada')
             
 
-def delete_student():
-    aluno = ''
+def delete_student(): #verifica se o input consta na lista, caso esteja ele exclui o estudante, caso não, retorna uma msg.
     excluir = int(input('Qual é o número da matrícula para excluir? '))
     removido = None
     for aluno in estudantes:
         if aluno['matricula'] == excluir:
             removido = aluno
         break
-    if removido is None:
-        print(f'Código {excluir} não encontrado')
-    else:
+    if removido != None:
         estudantes.remove(removido)
-    print(f'Estudante {aluno['nome']} foi excluido com sucesso!')
+        print(f'Estudante {aluno['nome']} foi excluido com sucesso!')
+    else:
+        print(f'Código {excluir} não encontrado')        
 
 while True:
     opcao = show_main_menu()
