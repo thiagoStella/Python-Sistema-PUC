@@ -47,8 +47,12 @@ def read_student(): #verifica se a lista está vazia ou imprime a lista na tela
     if estudantes == []:
         print('Não há estudantes cadastrados')
     else:
-        for i in estudantes:
-            print(i)
+        for aluno in estudantes:
+            for chave, valor in aluno.items():
+                print(f'{chave}: {valor}', end=' | ')
+            print()
+
+
 
 def update_student(): #verifica se o input consta na lista de estudantes, caso esteja abre a edição, caso não, retorna um msg.
     editar = int(input('Qual é o número da matrícula para atualizar? '))
