@@ -36,7 +36,7 @@ def show_student_menu():
 
 def create_student(): #adiciona os valores 'matricula', 'nome' e 'cpf' as respectivas chaves
     aluno = {}
-    aluno['matricula'] = int(input('\nDigite a matrícula: '))
+    aluno['matricula'] = input('\nDigite a matrícula: ')
     aluno['nome'] = input('Digite o nome do estudante: ')
     aluno['cpf'] = input('Digite o CPF: ')
     estudantes.append(aluno) #adiciona os dicionarios à lista 'estudantes'
@@ -55,33 +55,29 @@ def read_student(): #verifica se a lista está vazia ou imprime a lista na tela
 
 
 def update_student(): #verifica se o input consta na lista de estudantes, caso esteja abre a edição, caso não, retorna um msg.
-    editar = int(input('Qual é o número da matrícula para atualizar? '))
-    editado = None
+    editar = input('Qual é o número da matrícula para atualizar? ')
+    editado = False
     for aluno in estudantes:
         if aluno['matricula'] == editar:
-            editado = aluno
-        break
-    if editado != None:
-        editado['matricula'] = int(input("Digite a nova matrícula: "))
-        editado['nome'] = input("Digite o novo nome: ")
-        editado['cpf'] = input("Digite o novo cpf: ")
-        print('\nEstudante atualizado com sucesso!')
-        
-    else:
+            editado = True            
+            aluno['matricula'] = input("Digite a nova matrícula: ")
+            aluno['nome'] = input("Digite o novo nome: ")
+            aluno['cpf'] = input("Digite o novo cpf: ")
+            print('\nEstudante atualizado com sucesso!')
+    if not editado:
         print(f'Matricula {editar} não encontrada')
             
 
+
 def delete_student(): #verifica se o input consta na lista, caso esteja ele exclui o estudante, caso não, retorna uma msg.
-    excluir = int(input('Qual é o número da matrícula para excluir? '))
-    removido = None
+    excluir = input('Qual é o número da matrícula para excluir? ')
+    removido = False
     for aluno in estudantes:
         if aluno['matricula'] == excluir:
-            removido = aluno
-        break
-    if removido != None:
-        estudantes.remove(removido)
-        print(f'Estudante {aluno['nome']} foi excluido com sucesso!')
-    else:
+            removido = True
+            estudantes.remove(aluno)
+            print('\nEstudante excluído com sucesso!')
+    if not removido:
         print(f'Código {excluir} não encontrado')        
 
 while True:
