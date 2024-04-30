@@ -64,7 +64,7 @@ def update_record(codigo, nome_arquivo): #verifica se o input consta na lista de
             salvar_arquivo(lista, nome_arquivo)
             print('\nEstudante atualizado com sucesso!')
             return
-    print('Códuigo não encontrado.')
+    print('Código não encontrado.')
             
 
 
@@ -81,11 +81,11 @@ def delete_record(codigo, nome_arquivo): #verifica se o input consta na lista, c
     if not removido:
         print(f'Código {excluir} não encontrado')        
 
-def salvar_arquivo(lista, nome_arquivo):
+def salvar_arquivo(lista, nome_arquivo): # cria um arquivo JSON e o trata como arquivo
     with open(nome_arquivo, 'w', encoding='utf-8') as arquivo:
         json.dump(lista, arquivo)
 
-def ler_arquivo(nome_arquivo):
+def ler_arquivo(nome_arquivo): # carrega um arquivo JSON, caso não exista retorna uma lista vazia
     try:
         with open(nome_arquivo, 'r', encoding='utf-8') as arquivo:
             lista = json.load(arquivo)
@@ -93,7 +93,7 @@ def ler_arquivo(nome_arquivo):
     except:
         return []
 
-def processar_menu_secundario(opcao_secundaria, nome_arquivo):
+def processar_menu_secundario(opcao_secundaria, nome_arquivo): #executa o menu de operações
     if opcao_secundaria == '1': 
         create_record(nome_arquivo)
     elif opcao_secundaria =='2': 
